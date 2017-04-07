@@ -1,0 +1,2078 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/flatiron/union#readme"
+
+    >union (v0.4.6)</a>
+</h1>
+<h4>A hybrid buffered / streaming middleware kernel backwards compatible with connect.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union">module union</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.BufferedStream">
+            function <span class="apidocSignatureSpan">union.</span>BufferedStream
+            <span class="apidocSignatureSpan">(limit)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.HttpStream">
+            function <span class="apidocSignatureSpan">union.</span>HttpStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream">
+            function <span class="apidocSignatureSpan">union.</span>ResponseStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.RoutingStream">
+            function <span class="apidocSignatureSpan">union.</span>RoutingStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.RoutingStream.super_">
+            function <span class="apidocSignatureSpan">union.</span>RoutingStream.super_
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.createServer">
+            function <span class="apidocSignatureSpan">union.</span>createServer
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.errorHandler">
+            function <span class="apidocSignatureSpan">union.</span>errorHandler
+            <span class="apidocSignatureSpan">(err, req, res)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">union.</span>BufferedStream.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">union.</span>HttpStream.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">union.</span>ResponseStream.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">union.</span>RoutingStream.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">union.</span>RoutingStream.super_.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">union.</span>core</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">union.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union.BufferedStream">module union.BufferedStream</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.BufferedStream.BufferedStream">
+            function <span class="apidocSignatureSpan">union.</span>BufferedStream
+            <span class="apidocSignatureSpan">(limit)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.BufferedStream.super_">
+            function <span class="apidocSignatureSpan">union.BufferedStream.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union.BufferedStream.prototype">module union.BufferedStream.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.BufferedStream.prototype.close">
+            function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>close
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.BufferedStream.prototype.destroy">
+            function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>destroy
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.BufferedStream.prototype.end">
+            function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>end
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.BufferedStream.prototype.pause">
+            function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>pause
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.BufferedStream.prototype.pipe">
+            function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>pipe
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.BufferedStream.prototype.resume">
+            function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>resume
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.BufferedStream.prototype.write">
+            function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>write
+            <span class="apidocSignatureSpan">(chunk)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union.HttpStream">module union.HttpStream</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.HttpStream.HttpStream">
+            function <span class="apidocSignatureSpan">union.</span>HttpStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.HttpStream.super_">
+            function <span class="apidocSignatureSpan">union.HttpStream.</span>super_
+            <span class="apidocSignatureSpan">(limit)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union.HttpStream.prototype">module union.HttpStream.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.HttpStream.prototype.pipeState">
+            function <span class="apidocSignatureSpan">union.HttpStream.prototype.</span>pipeState
+            <span class="apidocSignatureSpan">(source)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union.ResponseStream">module union.ResponseStream</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.ResponseStream">
+            function <span class="apidocSignatureSpan">union.</span>ResponseStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.super_">
+            function <span class="apidocSignatureSpan">union.ResponseStream.</span>super_
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union.ResponseStream.prototype">module union.ResponseStream.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype._implicitHeader">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>_implicitHeader
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.addTrailers">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>addTrailers
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.end">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>end
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.getHeader">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>getHeader
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.html">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>html
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.json">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>json
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.pipe">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>pipe
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.redirect">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>redirect
+            <span class="apidocSignatureSpan">(path, status)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.removeHeader">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>removeHeader
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.setHeader">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>setHeader
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.text">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>text
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.write">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>write
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.ResponseStream.prototype.writeHead">
+            function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>writeHead
+            <span class="apidocSignatureSpan">(statusCode, statusMessage, headers)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union.RoutingStream">module union.RoutingStream</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.RoutingStream.RoutingStream">
+            function <span class="apidocSignatureSpan">union.</span>RoutingStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.RoutingStream.super_">
+            function <span class="apidocSignatureSpan">union.RoutingStream.</span>super_
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union.RoutingStream.prototype">module union.RoutingStream.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.RoutingStream.prototype.onError">
+            function <span class="apidocSignatureSpan">union.RoutingStream.prototype.</span>onError
+            <span class="apidocSignatureSpan">(err)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.RoutingStream.prototype.route">
+            function <span class="apidocSignatureSpan">union.RoutingStream.prototype.</span>route
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union.RoutingStream.super_">module union.RoutingStream.super_</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.RoutingStream.super_.super_">
+            function <span class="apidocSignatureSpan">union.RoutingStream.</span>super_
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union.RoutingStream.super_.prototype">module union.RoutingStream.super_.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.RoutingStream.super_.prototype.pipeRequest">
+            function <span class="apidocSignatureSpan">union.RoutingStream.super_.prototype.</span>pipeRequest
+            <span class="apidocSignatureSpan">(source)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.RoutingStream.super_.prototype.setEncoding">
+            function <span class="apidocSignatureSpan">union.RoutingStream.super_.prototype.</span>setEncoding
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.union.core">module union.core</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.core.createServer">
+            function <span class="apidocSignatureSpan">union.core.</span>createServer
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.union.core.errorHandler">
+            function <span class="apidocSignatureSpan">union.core.</span>errorHandler
+            <span class="apidocSignatureSpan">(err, req, res)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union" id="apidoc.module.union">module union</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.BufferedStream" id="apidoc.element.union.BufferedStream">
+        function <span class="apidocSignatureSpan">union.</span>BufferedStream
+        <span class="apidocSignatureSpan">(limit)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">BufferedStream = function (limit) {
+  events.EventEmitter.call(this);
+
+  if (typeof limit === &#x27;undefined&#x27;) {
+    limit = Infinity;
+  }
+
+  this.limit = limit;
+  this.size = 0;
+  this.chunks = [];
+  this.writable = true;
+  this.readable = true;
+  this._buffer = true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  @param limit {Number}
+  the limit for which the stream can be buffered
+```
+
+Example
+
+```js
+var bs = union.<span class="apidocCodeKeywordSpan">BufferedStream</span>(n);
+```
+
+## HttpStream Constructor
+This constructor inherits from `union.BufferedStream` and returns a stream with these extra properties:
+
+Specification
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.HttpStream" id="apidoc.element.union.HttpStream">
+        function <span class="apidocSignatureSpan">union.</span>HttpStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">HttpStream = function (options) {
+  options = options || {};
+  BufferedStream.call(this, options.limit);
+
+  if (options.buffer === false) {
+    this.buffer = false;
+  }
+
+  this.on(&#x27;pipe&#x27;, this.pipeState);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+  function HttpStream()
+```
+
+Example
+
+```js
+var hs = union.<span class="apidocCodeKeywordSpan">HttpStream</span>();
+```
+
+## HttpStream Instance Members
+
+### url
+The url from the request.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream" id="apidoc.element.union.ResponseStream">
+        function <span class="apidocSignatureSpan">union.</span>ResponseStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ResponseStream = function (options) {
+  var self = this,
+      key;
+
+  options = options || {};
+  HttpStream.call(this, options);
+
+  this.writeable = true;
+  this.response = options.response;
+
+  if (options.headers) {
+    for (key in options.headers) {
+      this.response.setHeader(key, options.headers[key]);
+    }
+  }
+
+  //
+  // Proxy `statusCode` changes to the actual `response.statusCode`.
+  //
+  Object.defineProperty(this, &#x27;statusCode&#x27;, {
+    get: function () {
+      return self.response.statusCode;
+    },
+    set: function (value) {
+      self.response.statusCode = value;
+    },
+    enumerable: true,
+    configurable: true
+  });
+
+  if (this.response) {
+    this._headers = this.response._headers = this.response._headers || {};
+
+    // Patch to node core
+    this.response._headerNames = this.response._headerNames || {};
+
+    //
+    // Proxy to emit &#x22;header&#x22; event
+    //
+    this._renderHeaders = this.response._renderHeaders;
+    this.response._renderHeaders = function () {
+      if (!self._emittedHeader) {
+        self._emittedHeader = true;
+        self.headerSent = true;
+        self._header = true;
+        self.emit(&#x27;header&#x27;);
+      }
+
+      return self._renderHeaders.call(self.response);
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+  function ResponseStream()
+```
+
+Example
+
+```js
+var rs = union.<span class="apidocCodeKeywordSpan">ResponseStream</span>();
+```
+
+# Tests
+
+All tests are written with [vows][0] and should be run with [npm][1]:
+
+``` bash
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.RoutingStream" id="apidoc.element.union.RoutingStream">
+        function <span class="apidocSignatureSpan">union.</span>RoutingStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">RoutingStream = function (options) {
+  options = options || {};
+  RequestStream.call(this, options);
+
+  this.before = options.before || [];
+  this.after = options.after || [];
+  this.response = options.response || options.res;
+  this.headers = options.headers || {
+    &#x27;x-powered-by&#x27;: &#x27;union &#x27; + union.version
+  };
+
+  this.target = new ResponseStream({
+    response: this.response,
+    headers: this.headers
+  });
+
+  this.once(&#x27;pipe&#x27;, this.route);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.RoutingStream.super_" id="apidoc.element.union.RoutingStream.super_">
+        function <span class="apidocSignatureSpan">union.</span>RoutingStream.super_
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">RoutingStream.super_ = function (options) {
+  options = options || {};
+  HttpStream.call(this, options);
+
+  this.on(&#x27;pipe&#x27;, this.pipeRequest);
+  this.request = options.request;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.createServer" id="apidoc.element.union.createServer">
+        function <span class="apidocSignatureSpan">union.</span>createServer
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createServer = function (options) {
+  var isArray = Array.isArray(options.after),
+      credentials;
+
+  if (!options) {
+    throw new Error(&#x27;options is required to create a server&#x27;);
+  }
+
+  function requestHandler(req, res) {
+    var routingStream = new RoutingStream({
+      before: options.before,
+      buffer: options.buffer,
+      //
+      // Remark: without new after is a huge memory leak that
+      // pipes to every single open connection
+      //
+      after: isArray &#x26;&#x26; options.after.map(function (After) {
+        return new After;
+      }),
+      request: req,
+      response: res,
+      limit: options.limit,
+      headers: options.headers
+    });
+
+    routingStream.on(&#x27;error&#x27;, function (err) {
+      var fn = options.onError || core.errorHandler;
+      fn(err, routingStream, routingStream.target, function () {
+        routingStream.target.emit(&#x27;next&#x27;);
+      });
+    });
+
+    req.pipe(routingStream);
+  }
+
+  //
+  // both https and spdy requires same params
+  //
+  if (options.https || options.spdy) {
+    if (options.https &#x26;&#x26; options.spdy) {
+      throw new Error(&#x27;You shouldn\&#x27;t be using https and spdy simultaneously.&#x27;);
+    }
+
+    var serverOptions,
+        credentials,
+        key = !options.spdy
+          ? &#x27;https&#x27;
+          : &#x27;spdy&#x27;;
+
+    serverOptions = options[key];
+    if (!serverOptions.key || !serverOptions.cert) {
+      throw new Error(&#x27;Both options.&#x27; + key + &#x27;.`key` and options.&#x27; + key + &#x27;.`cert` are required.&#x27;);
+    }
+
+    credentials = {
+      key:  fs.readFileSync(serverOptions.key),
+      cert: fs.readFileSync(serverOptions.cert)
+    };
+
+    if (serverOptions.ca) {
+      serverOptions.ca = !Array.isArray(serverOptions.ca)
+        ? [serverOptions.ca]
+        : serverOptions.ca
+
+      credentials.ca = serverOptions.ca.map(function (ca) {
+        return fs.readFileSync(ca);
+      });
+    }
+
+    if (options.spdy) {
+      // spdy is optional so we require module here rather than on top
+      var spdy = require(&#x27;spdy&#x27;);
+      return spdy.createServer(credentials, requestHandler);
+    }
+
+    return https.createServer(credentials, requestHandler);
+  }
+
+  return http.createServer(requestHandler);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+``` js
+var fs = require(&#x27;fs&#x27;),
+  union = require(&#x27;../lib&#x27;),
+  director = require(&#x27;director&#x27;);
+
+var router = new director.http.Router();
+
+var server = union.<span class="apidocCodeKeywordSpan">createServer</span>({
+before: [
+  function (req, res) {
+    var found = router.dispatch(req, res);
+    if (!found) {
+      res.emit(&#x27;next&#x27;);
+    }
+  }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.errorHandler" id="apidoc.element.union.errorHandler">
+        function <span class="apidocSignatureSpan">union.</span>errorHandler
+        <span class="apidocSignatureSpan">(err, req, res)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function error(err, req, res) {
+  if (err) {
+    (this.res || res).writeHead(err.status || 500, err.headers || { &#x22;Content-Type&#x22;: &#x22;text/plain&#x22; });
+    (this.res || res).end(err.message + &#x22;\n&#x22;);
+    return;
+  }
+
+  (this.res || res).writeHead(404, {&#x22;Content-Type&#x22;: &#x22;text/plain&#x22;});
+  (this.res || res).end(&#x22;Not Found\n&#x22;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union.BufferedStream" id="apidoc.module.union.BufferedStream">module union.BufferedStream</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.BufferedStream.BufferedStream" id="apidoc.element.union.BufferedStream.BufferedStream">
+        function <span class="apidocSignatureSpan">union.</span>BufferedStream
+        <span class="apidocSignatureSpan">(limit)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">BufferedStream = function (limit) {
+  events.EventEmitter.call(this);
+
+  if (typeof limit === &#x27;undefined&#x27;) {
+    limit = Infinity;
+  }
+
+  this.limit = limit;
+  this.size = 0;
+  this.chunks = [];
+  this.writable = true;
+  this.readable = true;
+  this._buffer = true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  @param limit {Number}
+  the limit for which the stream can be buffered
+```
+
+Example
+
+```js
+var bs = union.<span class="apidocCodeKeywordSpan">BufferedStream</span>(n);
+```
+
+## HttpStream Constructor
+This constructor inherits from `union.BufferedStream` and returns a stream with these extra properties:
+
+Specification
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.BufferedStream.super_" id="apidoc.element.union.BufferedStream.super_">
+        function <span class="apidocSignatureSpan">union.BufferedStream.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Stream() {
+  EE.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union.BufferedStream.prototype" id="apidoc.module.union.BufferedStream.prototype">module union.BufferedStream.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.BufferedStream.prototype.close" id="apidoc.element.union.BufferedStream.prototype.close">
+        function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>close
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">close = function () {
+  this.readable = false;
+  this.closed = true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.BufferedStream.prototype.destroy" id="apidoc.element.union.BufferedStream.prototype.destroy">
+        function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>destroy
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">destroy = function () {
+  this.readable = false;
+  this.writable = false;
+  delete this.chunks;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.BufferedStream.prototype.end" id="apidoc.element.union.BufferedStream.prototype.end">
+        function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>end
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function () {
+  this.readable = false;
+  this.ended = true;
+  this.emit(&#x27;end&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }
+  }
+]
+});
+
+router.get(/foo/, function () {
+this.res.writeHead(200, { &#x27;Content-Type&#x27;: &#x27;text/plain&#x27; })
+this.res.<span class="apidocCodeKeywordSpan">end</span>(&#x27;hello world\n&#x27;);
+});
+
+router.post(/foo/, { stream: true }, function () {
+var req = this.req,
+    res = this.res,
+    writeStream;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.BufferedStream.prototype.pause" id="apidoc.element.union.BufferedStream.prototype.pause">
+        function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>pause
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function () {
+  this.emit(&#x27;pause&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.BufferedStream.prototype.pipe" id="apidoc.element.union.BufferedStream.prototype.pipe">
+        function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>pipe
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pipe = function () {
+  var self = this,
+      dest;
+
+  if (self.resume) {
+    self.resume();
+  }
+
+  dest = stream.Stream.prototype.pipe.apply(self, arguments);
+
+  //
+  // just incase you are piping to two streams, do not emit data twice.
+  // note: you can pipe twice, but you need to pipe both streams in the same tick.
+  // (this is normal for streams)
+  //
+  if (this.piped) {
+    return dest;
+  }
+
+  process.nextTick(function () {
+    if (self.chunks) {
+      self.chunks.forEach(function (c) { self.emit(&#x27;data&#x27;, c) });
+      self.size = 0;
+      delete self.chunks;
+    }
+
+    if (!self.readable) {
+      if (self.ended) {
+        self.emit(&#x27;end&#x27;);
+      }
+      else if (self.closed) {
+        self.emit(&#x27;close&#x27;);
+      }
+    }
+  });
+
+  this.piped = true;
+
+  return dest;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+router.post(/foo/, { stream: true }, function () {
+  var req = this.req,
+      res = this.res,
+      writeStream;
+
+  writeStream = fs.createWriteStream(Date.now() + &#x27;-foo.txt&#x27;);
+  req.<span class="apidocCodeKeywordSpan">pipe</span>(writeStream);
+
+  writeStream.on(&#x27;close&#x27;, function () {
+    res.writeHead(200, { &#x27;Content-Type&#x27;: &#x27;text/plain&#x27; });
+    res.end(&#x27;wrote to a stream!&#x27;);
+  });
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.BufferedStream.prototype.resume" id="apidoc.element.union.BufferedStream.prototype.resume">
+        function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>resume
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function () {
+  this.emit(&#x27;resume&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.BufferedStream.prototype.write" id="apidoc.element.union.BufferedStream.prototype.write">
+        function <span class="apidocSignatureSpan">union.BufferedStream.prototype.</span>write
+        <span class="apidocSignatureSpan">(chunk)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (chunk) {
+  if (!this.chunks || this.piped) {
+    this.emit(&#x27;data&#x27;, chunk);
+    return;
+  }
+
+  this.chunks.push(chunk);
+  this.size += chunk.length;
+  if (this.limit &#x3c; this.size) {
+    this.pause();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union.HttpStream" id="apidoc.module.union.HttpStream">module union.HttpStream</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.HttpStream.HttpStream" id="apidoc.element.union.HttpStream.HttpStream">
+        function <span class="apidocSignatureSpan">union.</span>HttpStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">HttpStream = function (options) {
+  options = options || {};
+  BufferedStream.call(this, options.limit);
+
+  if (options.buffer === false) {
+    this.buffer = false;
+  }
+
+  this.on(&#x27;pipe&#x27;, this.pipeState);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+  function HttpStream()
+```
+
+Example
+
+```js
+var hs = union.<span class="apidocCodeKeywordSpan">HttpStream</span>();
+```
+
+## HttpStream Instance Members
+
+### url
+The url from the request.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.HttpStream.super_" id="apidoc.element.union.HttpStream.super_">
+        function <span class="apidocSignatureSpan">union.HttpStream.</span>super_
+        <span class="apidocSignatureSpan">(limit)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">super_ = function (limit) {
+  events.EventEmitter.call(this);
+
+  if (typeof limit === &#x27;undefined&#x27;) {
+    limit = Infinity;
+  }
+
+  this.limit = limit;
+  this.size = 0;
+  this.chunks = [];
+  this.writable = true;
+  this.readable = true;
+  this._buffer = true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union.HttpStream.prototype" id="apidoc.module.union.HttpStream.prototype">module union.HttpStream.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.HttpStream.prototype.pipeState" id="apidoc.element.union.HttpStream.prototype.pipeState">
+        function <span class="apidocSignatureSpan">union.HttpStream.prototype.</span>pipeState
+        <span class="apidocSignatureSpan">(source)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pipeState = function (source) {
+  this.headers = source.headers;
+  this.trailers = source.trailers;
+  this.method = source.method;
+
+  if (source.url) {
+    this.url = this.originalUrl = source.url;
+  }
+
+  if (source.query) {
+    this.query = source.query;
+  }
+  else if (source.url) {
+    this.query = ~source.url.indexOf(&#x27;?&#x27;)
+      ? qs.parse(url.parse(source.url).query)
+      : {};
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union.ResponseStream" id="apidoc.module.union.ResponseStream">module union.ResponseStream</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.ResponseStream" id="apidoc.element.union.ResponseStream.ResponseStream">
+        function <span class="apidocSignatureSpan">union.</span>ResponseStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ResponseStream = function (options) {
+  var self = this,
+      key;
+
+  options = options || {};
+  HttpStream.call(this, options);
+
+  this.writeable = true;
+  this.response = options.response;
+
+  if (options.headers) {
+    for (key in options.headers) {
+      this.response.setHeader(key, options.headers[key]);
+    }
+  }
+
+  //
+  // Proxy `statusCode` changes to the actual `response.statusCode`.
+  //
+  Object.defineProperty(this, &#x27;statusCode&#x27;, {
+    get: function () {
+      return self.response.statusCode;
+    },
+    set: function (value) {
+      self.response.statusCode = value;
+    },
+    enumerable: true,
+    configurable: true
+  });
+
+  if (this.response) {
+    this._headers = this.response._headers = this.response._headers || {};
+
+    // Patch to node core
+    this.response._headerNames = this.response._headerNames || {};
+
+    //
+    // Proxy to emit &#x22;header&#x22; event
+    //
+    this._renderHeaders = this.response._renderHeaders;
+    this.response._renderHeaders = function () {
+      if (!self._emittedHeader) {
+        self._emittedHeader = true;
+        self.headerSent = true;
+        self._header = true;
+        self.emit(&#x27;header&#x27;);
+      }
+
+      return self._renderHeaders.call(self.response);
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+  function ResponseStream()
+```
+
+Example
+
+```js
+var rs = union.<span class="apidocCodeKeywordSpan">ResponseStream</span>();
+```
+
+# Tests
+
+All tests are written with [vows][0] and should be run with [npm][1]:
+
+``` bash
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.super_" id="apidoc.element.union.ResponseStream.super_">
+        function <span class="apidocSignatureSpan">union.ResponseStream.</span>super_
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">super_ = function (options) {
+  options = options || {};
+  BufferedStream.call(this, options.limit);
+
+  if (options.buffer === false) {
+    this.buffer = false;
+  }
+
+  this.on(&#x27;pipe&#x27;, this.pipeState);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union.ResponseStream.prototype" id="apidoc.module.union.ResponseStream.prototype">module union.ResponseStream.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype._implicitHeader" id="apidoc.element.union.ResponseStream.prototype._implicitHeader">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>_implicitHeader
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_implicitHeader = function () {
+  return this.response[method].apply(this.response, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.addTrailers" id="apidoc.element.union.ResponseStream.prototype.addTrailers">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>addTrailers
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addTrailers = function () {
+  return this.response[method].apply(this.response, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.end" id="apidoc.element.union.ResponseStream.prototype.end">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>end
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function (data) {
+  if (data &#x26;&#x26; this.writable) {
+    this.emit(&#x27;data&#x27;, data);
+  }
+
+  this.modified = true;
+  this.emit(&#x27;end&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }
+  }
+]
+});
+
+router.get(/foo/, function () {
+this.res.writeHead(200, { &#x27;Content-Type&#x27;: &#x27;text/plain&#x27; })
+this.res.<span class="apidocCodeKeywordSpan">end</span>(&#x27;hello world\n&#x27;);
+});
+
+router.post(/foo/, { stream: true }, function () {
+var req = this.req,
+    res = this.res,
+    writeStream;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.getHeader" id="apidoc.element.union.ResponseStream.prototype.getHeader">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>getHeader
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getHeader = function () {
+  return this.response[method].apply(this.response, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.html" id="apidoc.element.union.ResponseStream.prototype.html">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>html
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">html = function (str) {
+  if (!this.response.writable) {
+    return;
+  }
+
+  if (typeof str === &#x27;number&#x27;) {
+    this.response.statusCode = str;
+    str = arguments[1];
+  }
+
+  this.modified = true;
+
+  if (!this.response._header &#x26;&#x26; this.response.getHeader(&#x27;content-type&#x27;) !== &#x27;text/html&#x27;) {
+    this.response.setHeader(&#x27;content-type&#x27;, &#x27;text/html&#x27;);
+  }
+
+  this.end(str ? str: &#x27;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.json" id="apidoc.element.union.ResponseStream.prototype.json">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>json
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">json = function (obj) {
+  if (!this.response.writable) {
+    return;
+  }
+
+  if (typeof obj === &#x27;number&#x27;) {
+    this.response.statusCode = obj;
+    obj = arguments[1];
+  }
+
+  this.modified = true;
+
+  if (!this.response._header &#x26;&#x26; this.response.getHeader(&#x27;content-type&#x27;) !== &#x27;application/json&#x27;) {
+    this.response.setHeader(&#x27;content-type&#x27;, &#x27;application/json&#x27;);
+  }
+
+  this.end(obj ? JSON.stringify(obj) : &#x27;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.pipe" id="apidoc.element.union.ResponseStream.prototype.pipe">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>pipe
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pipe = function () {
+  var self = this,
+      dest;
+
+  self.dest = dest = HttpStream.prototype.pipe.apply(self, arguments);
+
+  dest.on(&#x27;drain&#x27;, function() {
+    self.emit(&#x27;drain&#x27;)
+  })
+  return dest;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+router.post(/foo/, { stream: true }, function () {
+  var req = this.req,
+      res = this.res,
+      writeStream;
+
+  writeStream = fs.createWriteStream(Date.now() + &#x27;-foo.txt&#x27;);
+  req.<span class="apidocCodeKeywordSpan">pipe</span>(writeStream);
+
+  writeStream.on(&#x27;close&#x27;, function () {
+    res.writeHead(200, { &#x27;Content-Type&#x27;: &#x27;text/plain&#x27; });
+    res.end(&#x27;wrote to a stream!&#x27;);
+  });
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.redirect" id="apidoc.element.union.ResponseStream.prototype.redirect">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>redirect
+        <span class="apidocSignatureSpan">(path, status)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">redirect = function (path, status) {
+  var url = &#x27;&#x27;;
+
+  if (~path.indexOf(&#x27;://&#x27;)) {
+    url = path;
+  } else {
+    url += this.req.connection.encrypted ? &#x27;https://&#x27; : &#x27;http://&#x27;;
+    url += this.req.headers.host;
+    url += (path[0] === &#x27;/&#x27;) ? path : &#x27;/&#x27; + path;
+  }
+
+  this.res.writeHead(status || 302, { &#x27;Location&#x27;: url });
+  this.end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.removeHeader" id="apidoc.element.union.ResponseStream.prototype.removeHeader">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>removeHeader
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeHeader = function () {
+  return this.response[method].apply(this.response, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.setHeader" id="apidoc.element.union.ResponseStream.prototype.setHeader">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>setHeader
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setHeader = function () {
+  return this.response[method].apply(this.response, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.text" id="apidoc.element.union.ResponseStream.prototype.text">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>text
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">text = function (str) {
+  if (!this.response.writable) {
+    return;
+  }
+
+  if (typeof str === &#x27;number&#x27;) {
+    this.response.statusCode = str;
+    str = arguments[1];
+  }
+
+  this.modified = true;
+
+  if (!this.response._header &#x26;&#x26; this.response.getHeader(&#x27;content-type&#x27;) !== &#x27;text/plain&#x27;) {
+    this.response.setHeader(&#x27;content-type&#x27;, &#x27;text/plain&#x27;);
+  }
+
+  this.end(str ? str: &#x27;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.write" id="apidoc.element.union.ResponseStream.prototype.write">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>write
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (data) {
+  this.modified = true;
+
+  if (this.writable) {
+    return this.dest.write(data);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.ResponseStream.prototype.writeHead" id="apidoc.element.union.ResponseStream.prototype.writeHead">
+        function <span class="apidocSignatureSpan">union.ResponseStream.prototype.</span>writeHead
+        <span class="apidocSignatureSpan">(statusCode, statusMessage, headers)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeHead = function (statusCode, statusMessage, headers) {
+  if (typeof statusMessage === &#x27;string&#x27;) {
+    this.response.statusMessage = statusMessage;
+  } else {
+    this.response.statusMessage = this.response.statusMessage
+      || STATUS_CODES[statusCode] || &#x27;unknown&#x27;;
+    headers = statusMessage;
+  }
+
+  this.response.statusCode = statusCode;
+
+  if (headers) {
+    var keys = Object.keys(headers);
+    for (var i = 0; i &#x3c; keys.length; i++) {
+      var k = keys[i];
+      if (k) this.response.setHeader(k, headers[k]);
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      res.emit(&#x27;next&#x27;);
+    }
+  }
+]
+});
+
+router.get(/foo/, function () {
+this.res.<span class="apidocCodeKeywordSpan">writeHead</span>(200, { &#x27;Content-Type&#x27;: &#x27;text/plain&#x27; })
+this.res.end(&#x27;hello world\n&#x27;);
+});
+
+router.post(/foo/, { stream: true }, function () {
+var req = this.req,
+    res = this.res,
+    writeStream;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union.RoutingStream" id="apidoc.module.union.RoutingStream">module union.RoutingStream</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.RoutingStream.RoutingStream" id="apidoc.element.union.RoutingStream.RoutingStream">
+        function <span class="apidocSignatureSpan">union.</span>RoutingStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">RoutingStream = function (options) {
+  options = options || {};
+  RequestStream.call(this, options);
+
+  this.before = options.before || [];
+  this.after = options.after || [];
+  this.response = options.response || options.res;
+  this.headers = options.headers || {
+    &#x27;x-powered-by&#x27;: &#x27;union &#x27; + union.version
+  };
+
+  this.target = new ResponseStream({
+    response: this.response,
+    headers: this.headers
+  });
+
+  this.once(&#x27;pipe&#x27;, this.route);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.RoutingStream.super_" id="apidoc.element.union.RoutingStream.super_">
+        function <span class="apidocSignatureSpan">union.RoutingStream.</span>super_
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">super_ = function (options) {
+  options = options || {};
+  HttpStream.call(this, options);
+
+  this.on(&#x27;pipe&#x27;, this.pipeRequest);
+  this.request = options.request;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union.RoutingStream.prototype" id="apidoc.module.union.RoutingStream.prototype">module union.RoutingStream.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.RoutingStream.prototype.onError" id="apidoc.element.union.RoutingStream.prototype.onError">
+        function <span class="apidocSignatureSpan">union.RoutingStream.prototype.</span>onError
+        <span class="apidocSignatureSpan">(err)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">onError = function (err) {
+  this.emit(&#x27;error&#x27;, err);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.RoutingStream.prototype.route" id="apidoc.element.union.RoutingStream.prototype.route">
+        function <span class="apidocSignatureSpan">union.RoutingStream.prototype.</span>route
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">route = function (req) {
+  //
+  // When a `RoutingStream` is piped to:
+  //
+  // 1. Setup the pipe-chain between the `after` middleware, the abstract response
+  //    and the concrete response.
+  // 2. Attempt to dispatch to the `before` middleware, which represent things such as
+  //    favicon, static files, application routing.
+  // 3. If no match is found then pipe to the 404Stream
+  //
+  var self = this,
+      after,
+      error,
+      i;
+
+  //
+  // Don&#x27;t allow `this.target` to be writable on HEAD requests
+  //
+  this.target.writable = req.method !== &#x27;HEAD&#x27;;
+
+  //
+  // 1. Setup the pipe-chain between the `after` middleware, the abstract response
+  //    and the concrete response.
+  //
+  after = [this.target].concat(this.after, this.response);
+  for (i = 0; i &#x3c; after.length - 1; i++) {
+    //
+    // attach req and res to all streams
+    //
+    after[i].req     = req;
+    after[i + 1].req = req;
+    after[i].res     = this.response;
+    after[i + 1].res = this.response;
+    after[i].pipe(after[i + 1]);
+
+    //
+    // prevent multiple responses and memory leaks
+    //
+    after[i].on(&#x27;error&#x27;, this.onError);
+  }
+
+  //
+  // Helper function for dispatching to the 404 stream.
+  //
+  function notFound() {
+    error = new Error(&#x27;Not found&#x27;);
+    error.status = 404;
+    self.onError(error);
+  }
+
+  //
+  // 2. Attempt to dispatch to the `before` middleware, which represent things such as
+  //    favicon, static files, application routing.
+  //
+  (function dispatch(i) {
+    if (self.target.modified) {
+      return;
+    }
+    else if (++i === self.before.length) {
+      //
+      // 3. If no match is found then pipe to the 404Stream
+      //
+      return notFound();
+    }
+
+    self.target.once(&#x27;next&#x27;, dispatch.bind(null, i));
+    if (self.before[i].length === 3) {
+      self.before[i](self, self.target, function (err) {
+        if (err) {
+          self.onError(err);
+        } else {
+          self.target.emit(&#x27;next&#x27;);
+        }
+      });
+    }
+    else {
+      self.before[i](self, self.target);
+    }
+  })(-1);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union.RoutingStream.super_" id="apidoc.module.union.RoutingStream.super_">module union.RoutingStream.super_</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.RoutingStream.super_.super_" id="apidoc.element.union.RoutingStream.super_.super_">
+        function <span class="apidocSignatureSpan">union.RoutingStream.</span>super_
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">super_ = function (options) {
+  options = options || {};
+  BufferedStream.call(this, options.limit);
+
+  if (options.buffer === false) {
+    this.buffer = false;
+  }
+
+  this.on(&#x27;pipe&#x27;, this.pipeState);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union.RoutingStream.super_.prototype" id="apidoc.module.union.RoutingStream.super_.prototype">module union.RoutingStream.super_.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.RoutingStream.super_.prototype.pipeRequest" id="apidoc.element.union.RoutingStream.super_.prototype.pipeRequest">
+        function <span class="apidocSignatureSpan">union.RoutingStream.super_.prototype.</span>pipeRequest
+        <span class="apidocSignatureSpan">(source)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pipeRequest = function (source) {
+  this.url = this.originalUrl = source.url;
+  this.method = source.method;
+  this.httpVersion = source.httpVersion;
+  this.httpVersionMajor = source.httpVersionMajor;
+  this.httpVersionMinor = source.httpVersionMinor;
+  this.setEncoding = source.setEncoding;
+  this.connection = source.connection;
+  this.socket = source.socket;
+
+  if (source.query) {
+    this.query = source.query;
+  }
+  else {
+    this.query = ~source.url.indexOf(&#x27;?&#x27;)
+      ? qs.parse(url.parse(source.url).query)
+      : {};
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.RoutingStream.super_.prototype.setEncoding" id="apidoc.element.union.RoutingStream.super_.prototype.setEncoding">
+        function <span class="apidocSignatureSpan">union.RoutingStream.super_.prototype.</span>setEncoding
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setEncoding = function () {
+  return this.request[method].apply(this.request, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.union.core" id="apidoc.module.union.core">module union.core</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.union.core.createServer" id="apidoc.element.union.core.createServer">
+        function <span class="apidocSignatureSpan">union.core.</span>createServer
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createServer = function (options) {
+  var isArray = Array.isArray(options.after),
+      credentials;
+
+  if (!options) {
+    throw new Error(&#x27;options is required to create a server&#x27;);
+  }
+
+  function requestHandler(req, res) {
+    var routingStream = new RoutingStream({
+      before: options.before,
+      buffer: options.buffer,
+      //
+      // Remark: without new after is a huge memory leak that
+      // pipes to every single open connection
+      //
+      after: isArray &#x26;&#x26; options.after.map(function (After) {
+        return new After;
+      }),
+      request: req,
+      response: res,
+      limit: options.limit,
+      headers: options.headers
+    });
+
+    routingStream.on(&#x27;error&#x27;, function (err) {
+      var fn = options.onError || core.errorHandler;
+      fn(err, routingStream, routingStream.target, function () {
+        routingStream.target.emit(&#x27;next&#x27;);
+      });
+    });
+
+    req.pipe(routingStream);
+  }
+
+  //
+  // both https and spdy requires same params
+  //
+  if (options.https || options.spdy) {
+    if (options.https &#x26;&#x26; options.spdy) {
+      throw new Error(&#x27;You shouldn\&#x27;t be using https and spdy simultaneously.&#x27;);
+    }
+
+    var serverOptions,
+        credentials,
+        key = !options.spdy
+          ? &#x27;https&#x27;
+          : &#x27;spdy&#x27;;
+
+    serverOptions = options[key];
+    if (!serverOptions.key || !serverOptions.cert) {
+      throw new Error(&#x27;Both options.&#x27; + key + &#x27;.`key` and options.&#x27; + key + &#x27;.`cert` are required.&#x27;);
+    }
+
+    credentials = {
+      key:  fs.readFileSync(serverOptions.key),
+      cert: fs.readFileSync(serverOptions.cert)
+    };
+
+    if (serverOptions.ca) {
+      serverOptions.ca = !Array.isArray(serverOptions.ca)
+        ? [serverOptions.ca]
+        : serverOptions.ca
+
+      credentials.ca = serverOptions.ca.map(function (ca) {
+        return fs.readFileSync(ca);
+      });
+    }
+
+    if (options.spdy) {
+      // spdy is optional so we require module here rather than on top
+      var spdy = require(&#x27;spdy&#x27;);
+      return spdy.createServer(credentials, requestHandler);
+    }
+
+    return https.createServer(credentials, requestHandler);
+  }
+
+  return http.createServer(requestHandler);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+``` js
+var fs = require(&#x27;fs&#x27;),
+  union = require(&#x27;../lib&#x27;),
+  director = require(&#x27;director&#x27;);
+
+var router = new director.http.Router();
+
+var server = union.<span class="apidocCodeKeywordSpan">createServer</span>({
+before: [
+  function (req, res) {
+    var found = router.dispatch(req, res);
+    if (!found) {
+      res.emit(&#x27;next&#x27;);
+    }
+  }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.union.core.errorHandler" id="apidoc.element.union.core.errorHandler">
+        function <span class="apidocSignatureSpan">union.core.</span>errorHandler
+        <span class="apidocSignatureSpan">(err, req, res)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function error(err, req, res) {
+  if (err) {
+    (this.res || res).writeHead(err.status || 500, err.headers || { &#x22;Content-Type&#x22;: &#x22;text/plain&#x22; });
+    (this.res || res).end(err.message + &#x22;\n&#x22;);
+    return;
+  }
+
+  (this.res || res).writeHead(404, {&#x22;Content-Type&#x22;: &#x22;text/plain&#x22;});
+  (this.res || res).end(&#x22;Not Found\n&#x22;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
